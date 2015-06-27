@@ -14,6 +14,29 @@ def teacherindex():
     """Index Controller"""
     return render_template('teacherindex.html')
 
+  
+@app.route('/managetasks')
+def managetasks():
+    """Index Controller"""
+    return render_template('managetasks.html')
+  
+  
+@app.route('/managetaskspurple')
+def managetaskspurple():
+    """Index Controller"""
+    return render_template('managetaskspurple.html')
+  
+
+@app.route('/managegroups')
+def managegroups():
+    """Index Controller"""
+    return render_template('managegroups.html')
+  
+@app.route('/managestudents')
+def managestudents():
+    """Index Controller"""
+    return render_template('managestudents.html')
+  
 
 @app.errorhandler(404)
 def handle_error(e):
