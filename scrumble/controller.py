@@ -2,8 +2,7 @@ from scrumble import app
 from flask import request, url_for, render_template
 import os
 import requests
-
-from trolly.client import Client
+import cgi
 
 @app.route('/')
 def main():
@@ -19,12 +18,16 @@ def teacherindex():
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
     """Rebuild Controller"""
+    from trolly.client import Client
     api_key = "bf71d01b024c31a1c294b4755af55add"
     token = "404f4361c2e9bf578e355862ffaf603226c9bddfde60b4c44f6a3e9ed7d917cd"
     c = Client(api_key, token)
-    return c.get_boards()
-    ##return str([str(x) for x in c.get_boards()])
-    
+    boards = c.get_boards()
+    board = [x for x in boards if x.name.find(boardname) >= 0][0]
+    lists = board.get_lists()
+    backlog = lists[0]
+    groups = [[x.strip() for x in y.name.split(",")] for y in lists[1].get_cards()]
+    return cgi.escape(str("backlog: " + str(backlog) + "<br />groups: " + str(groups)))
 
 @app.errorhandler(404)
 def handle_error(e):
