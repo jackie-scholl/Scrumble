@@ -7,6 +7,12 @@ import requests
 def main():
     """Index Controller"""
     return render_template('index.html')
+  
+
+@app.route('/teacherindex.html')
+def teacherindex():
+    """Index Controller"""
+    return render_template('teacherindex.html')
 
 
 @app.errorhandler(404)
