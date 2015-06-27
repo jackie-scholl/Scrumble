@@ -9,7 +9,7 @@ def main():
     return render_template('index.html')
   
 
-@app.route('/teacherindex.html')
+@app.route('/teacherindex')
 def teacherindex():
     """Index Controller"""
     return render_template('teacherindex.html')
