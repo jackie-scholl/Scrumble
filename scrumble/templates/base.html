@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Scrumble</title>
+<link rel="shortcut icon" href="https://yoapp.s3.amazonaws.com/yo/favicon.ico">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:700,400">
+<meta charset="UTF-8">
+<meta name="description" content="Yo for a list of nearby public restrooms”>
+<meta name="keywords" content="Scrumble, scrum, project-based management”>
+<meta name="author" content=“Jackie Scholl”>
+<meta name="author-email" content=“jackie.h.scholl@gmail”.com>
+<meta name="github" content="http://github.com/raptortech-js/scrumble">
+<style type="text/css">
+body {
+    background:  repeat #9B59B6;
+    font-family: 'Montserrat', arial, sans-serif;
+    color: white;
+    text-rendering: optimizeLegibility;
+    font-weight: 700;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.header {
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+h1 {
+    font-size: 130px;
+    font-size: 13vmin;
+    text-rendering: optimizeLegibility;
+}
+footer {
+    bottom:0px;
+    left:0px;
+    right:0px;
+    font-size: 30px;
+    font-size: 3vmin;
+    text-align: center;
+    padding: 3% 0;
+    text-rendering: optimizeLegibility;
+}
+#no_result {
+    font-size: 60px;
+    font-size: 6vmin;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+#info {
+    font-size: 50px;
+    font-size: 7vmin;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+#list {
+    font-size: 30px;
+    font-size: 5vmin;
+    padding-left: 9%;
+    text-rendering: optimizeLegibility;
+}
+#res {
+    font-size: 60px;
+    font-size: 6vmin;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+a:link {color:white;}      /* unvisited link */
+a:visited {color:white;}  /* visited link */
+a:hover {color:white;}  /* mouse over link */
+a:active {color:white;}  /* selected link */
+</style>
+</head>
+<body>
+  <div class="header">
+    {% block header %}{% endblock %}
+  </div>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer>
+    <p>
+      Original YOTAXI built by <a id="link" href="http://twitter.com/itsnauman">@itsnauman</a> using Yo & Google Places API.
+    </p>
+
+    <p>
+      Modified to YORESTROOMS by Jackie Scholl as part of Project BE using <a id=“link” href=“http://refugerestrooms.org”>Refuge Restrooms</a>.</p>
+    </p>
+
+    <p>
+      Modified to Scrumble by Jackie Scholl.</p>
+    </p>
+  </footer>
+</body>
+</html>
