@@ -43,7 +43,7 @@ def get_students(teacher_name):
       try:
           staffer_refid=unicodedata.normalize('NFKD', section["staffPersonRefId"]).encode('ascii','ignore')
           if staffer_refid==str(ref):
-              steacher_sections.append(section)
+              teacher_sections.append(section)
       except TypeError:
           pass
   teacher_sections_refid = [section["refId"] for section in teacher_sections][0]
