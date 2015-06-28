@@ -43,17 +43,54 @@
               </ul>
             </li>
             <li><a href="{{ url_for('managetasks') }}">Manage Tasks</a></li>
-            <li><a href="{{ url_for('managestudents') }}">Manage Students</a></li>
+            <li class="active"><a href="{{ url_for('managegroups') }}">Manage Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
+    
+       <ul class="nav nav-tabs">
+        <li role="presentation"><a href="{{ url_for('managestudents') }}">Students</a></li>
+        <li role="presentation" class="active"><a href="#">Groups</a></li>
+       </ul>
+    
     </nav>
+  
+    <form role="form">
+      <div class="form-group">
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" id="sel2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </form>
+  
+    <div class="group-container"></div>
+  
+    <button id="addGroupButton" type="button" class="btn btn-default">Default</button>
   
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+    <script>
+      var wrapper = $(".group-container");
+      wrapper.html("");
+      
+      $('#addGroupButton').on('click', function (e) {
+        wrapper.append(createGroup);
+      });
+      
+      
+      function createGroup() {
+        return "<div class='form-group'><label>New multiple list:</label><select multiple class='form-control'><option>6</option><option>7</option><option>8</option></select></div>";
+      }
+    </script>
 
   </body>
 </html>
