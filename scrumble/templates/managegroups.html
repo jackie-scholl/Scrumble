@@ -43,11 +43,19 @@
               </ul>
             </li>
             <li><a href="{{ url_for('managetasks') }}">Manage Tasks</a></li>
-            <li><a href="{{ url_for('managegroups') }}">Manage Groups</a></li>
+            <li class="active"><a href="{{ url_for('managegroups') }}">Manage Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
+    
+       <ul class="nav nav-tabs">
+        <li role="presentation"><a href="{{ url_for('managestudents') }}">Students</a></li>
+        <li role="presentation" class="active"><a href="#">Groups</a></li>
+       </ul>
+    
     </nav>
+  
+    
   
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

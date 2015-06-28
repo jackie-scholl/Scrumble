@@ -16,7 +16,7 @@
     <!-- Material Design Colors -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/materialdesigncolors.css') }}">
     
-        <!-- Extra CSS -->
+    <!-- Extra CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
     
   </head>
@@ -42,12 +42,57 @@
                 <li><a href="#">Section 3</a></li>
               </ul>
             </li>
-            <li><a href="{{ url_for('managetasks') }}">Manage Tasks</a></li>
-            <li><a href="{{ url_for('managegroups') }}">Manage Groups</a></li>
+            <li class="active"><a href="{{ url_for('managetasks') }}">Manage Tasks</a></li>
+            <li><a href="{{ url_for('managestudents') }}">Manage Students</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+  
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Unit Name</h3>
+        Driving Question
+      </div>
+      <div class="panel-body">
+       <ul class="nav nav-tabs nav-justified ">
+         <li role="presentation" class= "palette-Red-700 bg"><a href="#" class= "palette-Red-200 text">Red</a></li>
+         <li role="presentation" class= "palette-Orange-700 bg"><a href="#" class= "palette-Orange-200 text">Orange</a></li>
+         <li role="presentation" class= "palette-Yellow-700 bg"><a href="#" class= "palette-Yellow-200 text">Yellow</a></li>
+         <li role="presentation" class= "palette-Green-700 bg"><a href="#" class= "palette-Green-200 text">Green</a></li>
+         <li role="presentation" class= "palette-Blue-700 bg"><a href="#" class= "palette-Blue-200 text">Blue</a></li>
+         <li role="presentation" class= "palette-Purple-700 bg"><a href="{{ url_for('managetaskspurple') }}" class= "palette-Purple-200 text">Purple</a></li>
+       </ul>
+       <ul class="list-group">
+        <li class="list-group-item">
+          objective
+          <br>
+          task
+         </li>
+        <li class="list-group-item">
+          objective
+          <br>
+          task
+         </li>
+        <li class="list-group-item">
+          objective
+          <br>
+          task
+         </li>
+        <li class="list-group-item">
+          objective
+          <br>
+          task
+         </li>
+        <li class="list-group-item">
+           objective
+          <br>
+          task
+         </li>
+      </ul>
+      </div>
+    </div>
   
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

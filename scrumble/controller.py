@@ -10,7 +10,7 @@ def main():
     return render_template('index.html')
   
 
-@app.route('/teacherindex.html')
+@app.route('/teacherindex')
 def teacherindex():
     """Index Controller"""
     return render_template('teacherindex.html')
@@ -28,6 +28,28 @@ def rebuild(boardname):
     backlog = lists[0]
     groups = [[x.strip() for x in y.name.split(",")] for y in lists[1].get_cards()]
     return cgi.escape(str("backlog: " + str(backlog) + "<br />groups: " + str(groups)))
+  
+@app.route('/managetasks')
+def managetasks():
+    """Index Controller"""
+    return render_template('managetasks.html')
+  
+  
+@app.route('/managetaskspurple')
+def managetaskspurple():
+    """Index Controller"""
+    return render_template('managetaskspurple.html')
+  
+
+@app.route('/managegroups')
+def managegroups():
+    """Index Controller"""
+    return render_template('managegroups.html')
+  
+@app.route('/managestudents')
+def managestudents():
+    """Index Controller"""
+    return render_template('managestudents.html')
 
 @app.errorhandler(404)
 def handle_error(e):
