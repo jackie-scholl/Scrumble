@@ -65,8 +65,8 @@ def rebuild(boardname):
     import uuid
     api_key = "bf71d01b024c31a1c294b4755af55add"
     token = "404f4361c2e9bf578e355862ffaf603226c9bddfde60b4c44f6a3e9ed7d917cd"
-    c = Client(api_key, token)
-    boards = c.get_boards()
+    client = Client(api_key, token)
+    boards = client.get_boards()
     board = [x for x in boards if x.name == boardname][0]
     lists = board.get_lists()
     backlog = lists[0]
@@ -75,21 +75,24 @@ def rebuild(boardname):
     [b.close_board(True) for b in boards_to_delete]
     out = []
     for x in range(len(groups)):
-        b = create_board(c, "Cell Biology Group %s" % x)
+        b = create_board(client, "Cell Biology Group %s" % (x + 1))
         out.append(b)
         for m in groups[x]:
             try:
                 b.add_member(get_email(m), m)
             except ResourceUnavailable:
                 pass
-        l = b.add_list(query_params={"name": "backlog"})
-        for c in b.get_cards():
-            l.add_card(query_params={"name": "backlog"})
+        [l.update_list(query_params={"closed":"true"}) for l in b.get_lists()]
+        b.add_list(query_params={"name": "Sprint"})
+        b.add_list(query_params={"name": "Done"})
+        back_list = b.add_list(query_params={"name": "Backlog"})
+        for card in backlog.get_cards():
+            added = copy_card(back_list, card)
+            out.append(added)
     return cgi.escape(str(out))
 
 def create_board(client, name):
     return client.add_board(name)
-    #, "id": uuid.uuid4().hex
 
 def get_email(name):
     map = {"Keller Scholl": "keller.scholl@gmail.com",
@@ -101,6 +104,17 @@ def get_email(name):
     except KeyError:
         l = name.split(" ")
         return "%s.%s@example.edu" % (l[0], l[1])
+
+def copy_card(list, original):
+    c = original.get_card_information()
+    c2 = dict()
+    c2['name'] = c['name']
+    c2['due'] = c['due'] or "null"
+    if c['desc'] != '':
+         c2['desc'] = c['desc']
+    if c['labels']:
+        c2['labels'] = ",".join(c['labels'])
+    return list.add_card(query_params=c2)
         
 @app.errorhandler(404)
 def handle_error(e):

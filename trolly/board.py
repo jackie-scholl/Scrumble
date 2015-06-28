@@ -185,7 +185,7 @@ class Board(trelloobject.TrelloObject):
             http_method='DELETE'
         )
 
-    def close_board(self, closed):
+    def close_board(self, closed=True):
         '''
         Change the closed status of the board.
         '''
