@@ -20,6 +20,7 @@ def teacherindex():
 def rebuild(boardname):
     """Rebuild Controller"""
     from trolly.client import Client
+    from trolly.exceptions import ResourceUnavailable
     import uuid
     api_key = "bf71d01b024c31a1c294b4755af55add"
     token = "404f4361c2e9bf578e355862ffaf603226c9bddfde60b4c44f6a3e9ed7d917cd"
@@ -35,7 +36,11 @@ def rebuild(boardname):
     for x in range(len(groups)):
         b = create_board(c, "Cell Biology Group %s" % x)
         out.append(b)
-        [b.add_member(get_email(m), m) for m in groups[x]]
+        for m in groups[x]:
+            try:
+                b.add_member(get_email(m), m)
+            except ResourceUnavailable:
+                pass
     return cgi.escape(str(out))
 
 def create_board(client, name):
@@ -49,8 +54,8 @@ def get_email(name):
      "Laura Ballek":  "lauraballek@gmail.com"}
     try:
         return map[name]
-    catch KeyError:
-        
+    except KeyError:
+        return "example@example.edu"
     #l = name.split(" ")
     #return "%s.%s@sample.edu" % (l[0], l[1])
 

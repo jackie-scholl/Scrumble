@@ -37,7 +37,7 @@ class TrelloObject(object):
         return self.fetch_json(base_uri + '/organizations')
 
     def get_boards_json(self, base_uri):
-        return self.fetch_json(base_uri + '/boards')
+        return self.fetch_json(base_uri + '/boards', query_params={"filter": "open"})
 
     def get_labels_json(self, base_uri):
         return self.fetch_json(base_uri + '/labels')
