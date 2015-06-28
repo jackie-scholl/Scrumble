@@ -1,0 +1,25 @@
+.navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+  
+.navbar-brand img {
+    max-height: 100%;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #9E9E9E;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #E0E0E0;
+}
+
+.navbar > .container-fluid {
+  background-color: #212121;
+}
+
+.navbar-default {
+  border-color: #212121;
+  border-radius: 0px;
+}
