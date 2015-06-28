@@ -10,7 +10,7 @@ body {
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
-  background: url("scrum.jpg") center;
+  background: url("team.jpg") center;
   background-size: cover;
   position: relative;
   display: table;
@@ -19,7 +19,7 @@ body {
   min-height: 100%;
 }
 .site-wrapper-inner {
-  background-color:rgba(0,0,0,0.7);
+  background-color:rgba(0,0,0,0.6);
   display: table-cell;
   vertical-align: top; 
 }
