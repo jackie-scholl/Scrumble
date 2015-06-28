@@ -184,3 +184,16 @@ class Board(trelloobject.TrelloObject):
             uri_path=self.base_uri + '/members/%s' % member_id,
             http_method='DELETE'
         )
+
+    def close_board(self, closed):
+        '''
+        Change the closed status of the board.
+        '''
+        return self.fetch_json(
+            uri_path=self.base_uri + '/closed',
+            http_method='PUT',
+            query_params={
+                'value': str(bool(closed)).lower()
+            }
+        )
+
