@@ -133,7 +133,12 @@ def update_assignments(boardname):
 
 def ensure_assigned(card, students, is_done):
     pass
-    
+
+def get_assignment(card, students, is_done):
+    card_map = card.get_card_information()
+    status = 'TURNED_IN' if is_done else 'IN_PROGRESS'
+    students_string = '[' + ",".join([s.name for s in students]) + ']'
+    return '{"schoolRefId": "","leaRefId": "","sectionRefId": "","students": %s,"refId": "%s","staffRefId": "","availableDate": "","dueDate": "","name": "%s","description": "%s","creatorRefId": "","administratorRefId": "","sourceObjects": [],"status": "%s"}' % students_string, card_map['id'], card_map['name'], card_map['description'], status
 
 
 @app.errorhandler(404)
