@@ -6,12 +6,12 @@ import cgi
 
 
 @app.route('/')
-def main():
+def index():
     """Index Controller"""
-    return render_template('index.html')
+    return render_template('teacherindex.html')
   
 
-@app.route('/teacherindex.html')
+@app.route('/teacherindex')
 def teacherindex():
     """Index Controller"""
     return render_template('teacherindex.html')
@@ -30,6 +30,31 @@ def rebuild(boardname):
     lists = board.get_lists()
     backlog = lists[0]
     groups = [[x.strip() for x in y.name.split(",")] for y in lists[1].get_cards()]
+<<<<<<< HEAD
+    return cgi.escape(str("backlog: " + str(backlog) + "<br />groups: " + str(groups)))
+  
+@app.route('/managetasks')
+def managetasks():
+    """Index Controller"""
+    return render_template('managetasks.html')
+  
+  
+@app.route('/managetaskspurple')
+def managetaskspurple():
+    """Index Controller"""
+    return render_template('managetaskspurple.html')
+  
+
+@app.route('/managegroups')
+def managegroups():
+    """Index Controller"""
+    return render_template('managegroups.html')
+  
+@app.route('/managestudents')
+def managestudents():
+    """Index Controller"""
+    return render_template('managestudents.html')
+=======
     boards_to_delete = [x for x in boards if x.name.find(boardname) == 0 and len(x.name) > len(boardname)]
     [b.close_board(True) for b in boards_to_delete]
     out = []
@@ -58,6 +83,7 @@ def get_email(name):
         return "example@example.edu"
     #l = name.split(" ")
     #return "%s.%s@sample.edu" % (l[0], l[1])
+>>>>>>> master
 
 @app.errorhandler(404)
 def handle_error(e):
