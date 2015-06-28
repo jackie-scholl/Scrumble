@@ -3,18 +3,27 @@ from flask import request, url_for, render_template
 import os
 import requests
 import cgi
+#from requester import *
 
 
 @app.route('/')
 def index():
     """Index Controller"""
-    return render_template('teacherindex.html')
+    return render_template('login.html')
   
 
-@app.route('/teacherindex')
+@app.route('/teacherindex', methods=['POST'])
 def teacherindex():
     """Index Controller"""
-    return render_template('teacherindex.html')
+    teacher_name = (request.form['teacher_name'])
+    students = ["test","test1"]
+    return render_template('teacherindex.html', teacher_name=teacher_name, students=students)
+  
+  
+@app.route('/teacherindex2')
+def teacherindex2():
+    """Index Controller"""
+    return render_template('teacherindex2.html')
 
   
 @app.route('/managetasks')
@@ -32,19 +41,14 @@ def managetaskspurple():
 @app.route('/managegroups')
 def managegroups():
     """Index Controller"""
+    students = session.get('students', None)
     return render_template('managegroups.html')
   
-
 @app.route('/managestudents')
 def managestudents():
     """Index Controller"""
+    students = request.args.get('students', None)
     return render_template('managestudents.html')
-
-
-@app.errorhandler(404)
-def handle_error(e):
-    return render_template('404.html')
-
 
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
@@ -105,3 +109,6 @@ def copy_card(list, original):
         c2['labels'] = ",".join(c['labels'])
     return list.add_card(query_params=c2)
         
+@app.errorhandler(404)
+def handle_error(e):
+    return render_template('404.html')
