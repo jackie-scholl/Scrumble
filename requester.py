@@ -75,7 +75,13 @@ def get_student_names_from_refids(student_refid_list):
 		)['name']['actualNameOfRecord']['fullName'] for refid in student_refid_list]
 
 def save_file(fileName):
-	posted_file_response = requests.post(BASEURL+"documents",headers=HEADS,files={'requester.py': open('requester.py', 'rb')})
+	"""Saves a file of a given name, and returns the json response."""
+	return requests.post(BASEURL+"documents",headers=HEADS,files={'requester.py': open('requester.py', 'rb')})
+def make_assignment(assignment_dictionary):
+	#h=HEADS.copy()
+	#h.update(assignment_dictionary)
+	return requests.post(BASEURL+"documents",headers=HEADS,data=assignment_dictionary)
+
 #all_students = requests.get(BASEURL+'students',headers=HEADS).json()
 #student_names_and_ids = [[stud['name']['actualNameOfRecord']['fullName'],stud['refId']] for stud in all_students]
 
