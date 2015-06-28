@@ -1,9 +1,11 @@
 from scrumble import app
-from flask import request, url_for, render_template
+from flask import request, url_for, render_template, session
+
 import os
 import requests
 import cgi
-#from requester import *
+from requester import *
+
 
 
 @app.route('/')
@@ -15,9 +17,10 @@ def index():
 @app.route('/teacherindex', methods=['POST'])
 def teacherindex():
     """Index Controller"""
-    teacher_name = (request.form['teacher_name'])
-    students = ["test","test1"]
-    return render_template('teacherindex.html', teacher_name=teacher_name, students=students)
+    session['teacher_name'] = (request.form['teacher_name'])
+    #get_students(session['teacher_name'])
+    session['students'] = ['test','test1']
+    return render_template('teacherindex.html')
   
   
 @app.route('/teacherindex2')
@@ -47,7 +50,7 @@ def managegroups():
 @app.route('/managestudents')
 def managestudents():
     """Index Controller"""
-    students = request.args.get('students', None)
+    students = session.get('students', None)
     return render_template('managestudents.html')
 
 @app.route('/rebuild/<boardname>')
