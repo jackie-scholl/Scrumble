@@ -108,6 +108,15 @@ class Client(object):
             name=organisation_json['name']
         )
 
+    def add_board(self, board_name):
+        return self.create_board(
+            self.fetch_json(
+                uri_path = '/boards',
+                http_method='POST',
+                query_params={'name': board_name}
+            )
+        )
+
     def create_board(self, board_json):
         '''
         Create Board object from a JSON object
