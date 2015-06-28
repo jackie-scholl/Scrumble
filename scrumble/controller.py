@@ -4,9 +4,9 @@ import os
 import requests    
 
 @app.route('/')
-def main():
+def index():
     """Index Controller"""
-    return render_template('index.html')
+    return render_template('teacherindex.html')
   
 
 @app.route('/teacherindex')

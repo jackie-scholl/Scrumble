@@ -1,0 +1,70 @@
+.nav-tabs > li > .palette-Red-200:hover,
+.nav-tabs > li > .palette-Red-200:focus,
+.palette-Red-700.bg.active > a:hover{
+  background-color: #EF5350;
+  border: #EF5350;
+  border-radius: 0px;
+  color: #EF9A9A;
+}
+
+.nav-tabs > li > .palette-Orange-200:hover,
+.nav-tabs > li > .palette-Orange-200:focus,
+.palette-Orange-700.bg.active > a:hover{
+  background-color: #FFA726;
+  border: #EF5350;
+  border-radius: 0px;
+}
+
+.nav-tabs > li > .palette-Yellow-200:hover,
+.nav-tabs > li > .palette-Yellow-200:focus,
+.palette-Yellow-700.bg.active > a:hover{
+  background-color: #FFEE58;
+  border: #EF5350;
+  border-radius: 0px;
+}
+
+.nav-tabs > li > .palette-Green-200:hover,
+.nav-tabs > li > .palette-Green-200:focus,
+.palette-Green-700.bg.active > a:hover{
+  background-color: #66BB6A;
+  border: #EF5350;
+  border-radius: 0px;
+}
+
+.nav-tabs > li > .palette-Blue-200:hover,
+.nav-tabs > li > .palette-Blue-200:focus,
+.palette-Blue-700.bg.active > a:hover {
+  background-color: #42A5F5;
+  border: #EF5350;
+  border-radius: 0px;
+}
+
+.nav-tabs > li > .palette-Purple-200:hover,
+.nav-tabs > li > .palette-Purple-200:focus,
+.palette-Purple-700.bg.active > a:hover {
+  background-color: #AB47BC;
+  border: #EF5350;
+  border-radius: 0px;
+  color: #CE93D8;
+}
+
+.palette-Red-700.bg.active > a{
+  background-color: #D32F2F;
+  border: #D32F2F;
+  border-radius: 0px;
+  color: #EF9A9A;
+  font-weight: bold;
+}
+
+.palette-Purple-700.bg.active > a{
+  background-color: #7B1FA2;
+  border: #7B1FA2;
+  border-radius: 0px;
+  color: #CE93D8;
+  font-weight: bold;
+}
+
+.no-padding {
+  padding-right: 0px;
+  white-space: nowrap;
+}

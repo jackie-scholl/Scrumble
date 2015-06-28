@@ -48,12 +48,49 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
   
+                    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Card</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <input type="text" class="form-control" id="objective-input" placeholder="objective" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-control" id="task-input" placeholder="task" aria-describedby="basic-addon1">
+        </div>
+          <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Assign To
+            <span class="caret"></span>
+          </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#"><input class="selectall" type="checkbox" /> Select All</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 1</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 2</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 3</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 4</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary new-card-save" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>  
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Unit Name</h3>
-        Driving Question
+        <h3>Unit Name: Human Body</h3>
+        Driving Question: how we even do this living this, tho?
       </div>
       <div class="panel-body">
        <ul class="nav nav-tabs nav-justified ">
@@ -64,45 +101,55 @@
          <li role="presentation" class= "palette-Blue-700 bg"><a href="#" class= "palette-Blue-200 text">Blue</a></li>
          <li role="presentation" class= "palette-Purple-700 bg"><a href="{{ url_for('managetaskspurple') }}" class= "palette-Purple-200 text">Purple</a></li>
        </ul>
-       <ul class="list-group">
+        
+       <ul class="list-group" id="cards">
+         <li class="list-group-item">
+           <h4>Key Question: What is a cell?</h4>
+         </li>
         <li class="list-group-item">
-          objective: 
+          objective: learn about the different parts of the cell
           <div class="dropdown pull-right no-padding">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Assign To
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#"><input type="checkbox" /> Group 1</a></li>
-            <li><a href="#"><input type="checkbox" /> Group 2</a></li>
-            <li><a href="#"><input type="checkbox" /> Group 3</a></li>
-            <li><a href="#"><input type="checkbox" /> Group 4</a></li>
+            <li><a href="#"><input class="selectall" type="checkbox" /> Select All</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 1</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 2</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 3</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 4</a></li>
           </ul>
           </div>
           <br>
-          task
+          task: click through the organelles on <a href="http://learn.genetics.utah.edu/content/cells/insideacell/">this website</a>
          </li>
         <li class="list-group-item">
-          objective 
+          objective: learn about the different parts of the cell
+          <div class="dropdown pull-right no-padding">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Assign To
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#"><input class="selectall" type="checkbox" /> Select All</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 1</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 2</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 3</a></li>
+            <li><a href="#"><input class="checkbox1" type="checkbox" /> Group 4</a></li>
+          </ul>
+          </div>
           <br>
-          task
+          task: fill out <a href="https://drive.google.com/file/d/0B34HMnEPu3pddkR5N3dJUkU4d1U/view?usp=sharing">this worksheet</a> labeling the different parts of the cell
          </li>
-        <li class="list-group-item">
-          objective
-          <br>
-          task
-         </li>
-        <li class="list-group-item">
-          objective
-          <br>
-          task
-         </li>
-        <li class="list-group-item">
-           objective
-          <br>
-          task
-         </li>
-      </ul>
+         <div id="addnew"> 
+         <li class="list-group-item">
+         <button class="btn-block add-card" data-toggle="modal" data-target="#myModal">
+          + add new card
+          </button>
+            </li>
+           <div>
+         </ul>
       </div>
     </div>
   
@@ -111,6 +158,8 @@
   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+    <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
 
   </body>
 </html>
