@@ -1,9 +1,17 @@
 $(document).ready(function() {  
-  $(".selectcheck").click(function (e) {
-        var cb = $(this).find(":checkbox")[0];
-        if (e.target != cb) cb.checked = !cb.checked;
-        $(this).toggleClass("selected", cb.checked);
+
+    $('.selectall').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkbox1').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
     });
+    
   
   $(".new-card-save").click(function () {
       var objective = document.getElementById("objective-input").value; 
