@@ -19,6 +19,9 @@
     <!-- Extra CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
     
+                <!-- Extra CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/navstyles.css') }}">
+    
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -31,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Scrumble</a>
+          <a class="navbar-brand" href="/"><img alt="Brand" src="{{ url_for('static',filename='styles/SCRUMBLE.png') }}"></a>
         </div>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
