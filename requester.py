@@ -81,7 +81,10 @@ def make_assignment(assignment_dictionary):
 	#h=HEADS.copy()
 	#h.update(assignment_dictionary)
 	return requests.post(BASEURL+"assignments",headers=HEADS,data=assignment_dictionary)
-
+def edit_assignment(assignment_dictionary,id):
+	return requests.post(BASEURL+"assignments/"+id,headers=HEADS,data=assignment_dictionary)
+def del_assignment(id):
+	return requests.delete(BASEURL+"assignments/"+id,headers=HEADS)
 #all_students = requests.get(BASEURL+'students',headers=HEADS).json()
 #student_names_and_ids = [[stud['name']['actualNameOfRecord']['fullName'],stud['refId']] for stud in all_students]
 
