@@ -80,7 +80,7 @@ def save_file(fileName):
 def make_assignment(assignment_dictionary):
 	#h=HEADS.copy()
 	#h.update(assignment_dictionary)
-	return requests.post(BASEURL+"documents",headers=HEADS,data=assignment_dictionary)
+	return requests.post(BASEURL+"assignments",headers=HEADS,data=assignment_dictionary)
 
 #all_students = requests.get(BASEURL+'students',headers=HEADS).json()
 #student_names_and_ids = [[stud['name']['actualNameOfRecord']['fullName'],stud['refId']] for stud in all_students]
