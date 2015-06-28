@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    
+    <!-- Material Design Colors -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/materialdesigncolors.css') }}">
+    
+        <!-- Extra CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+
+var correctCards = 0;
+$( init );
+
+function init() {
+
+  // Hide the success message
+  $('#successMessage').hide();
+  $('#successMessage').css( {
+    left: '580px',
+    top: '250px',
+    width: 0,
+    height: 0
+  } );
+
+  // Reset the game
+  correctCards = 0;
+  $('#cardPile').html( '' );
+  $('#cardSlots').html( '' );
+
+  // Create the pile of shuffled cards
+  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+  numbers.sort( function() { return Math.random() - .5 } );
+
+  for ( var i=0; i<10; i++ ) {
+    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+      containment: '#content',
+      stack: '#cardPile div',
+      cursor: 'move',
+      revert: true
+    } );
+  }
+
+  // Create the card slots
+  var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' ];
+  for ( var i=1; i<=10; i++ ) {
+    $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+      accept: '#cardPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );
+  }
+
+}
+
+function handleCardDrop( event, ui ) {
+  var slotNumber = $(this).data( 'number' );
+  var cardNumber = ui.draggable.data( 'number' );
+
+  // If the card was dropped to the correct slot,
+  // change the card colour, position it directly
+  // on top of the slot, and prevent it being dragged
+  // again
+
+  if ( slotNumber == cardNumber ) {
+    ui.draggable.addClass( 'correct' );
+    ui.draggable.draggable( 'disable' );
+    $(this).droppable( 'disable' );
+    ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+    ui.draggable.draggable( 'option', 'revert', false );
+    correctCards++;
+  } 
+  
+  // If all the cards have been placed correctly then display a message
+  // and reset the cards for another go
+
+  if ( correctCards == 10 ) {
+    $('#successMessage').show();
+    $('#successMessage').animate( {
+      left: '380px',
+      top: '200px',
+      width: '400px',
+      height: '100px',
+      opacity: 1
+    } );
+  }
+
+}
+    </script>
+    
+  </head>
+  <body>
+    <div class="wideBox">
+  <h1>Drag-and-Drop with jQuery: Your Essential Guide</h1>
+  <h2>A Number Cards Game</h2>
+</div>
+
+<div id="content">
+
+  <div id="cardPile"> </div>
+  <div id="cardSlots"> </div>
+
+  <div id="successMessage">
+    <h2>You did it!</h2>
+    <button onclick="init()">Play Again</button>
+  </div>
+
+</div>
+    
+    <nav class="navbar navbar-default">
+      <div class="container-fluid palette-Light-Blue-200 bg">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Scrumble</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Class <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Section 1</a></li>
+              <li><a href="#">Section 2</a></li>
+              <li><a href="#">Section 3</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ url_for('managetasks') }}">Manage Tasks</a></li>
+          <li class="active"><a href="{{ url_for('managegroups') }}">Manage Students</a></li>
+        </ul>
+      </div><!-- /.container-fluid -->
+    
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a href="{{ url_for('managestudents') }}">Students</a></li>
+        <li role="presentation" class="active"><a href="#">Groups</a></li>
+      </ul>
+
+    </nav>
+  
+    <form role="form">
+      <div class="form-group">
+        <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
+        <select multiple class="form-control" id="sel2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </form>
+  
+    <div class="group-container"></div>
+    
+
+  
+    <button id="addGroupButton" type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-plus-sign"></span> Add New Group
+    </button>
+    <button id="saveChangesButton" type="button" class="btn btn-primary">Save Changes</button>
+  
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+
+  </body>
+</html>
