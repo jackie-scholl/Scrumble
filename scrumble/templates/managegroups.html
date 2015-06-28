@@ -60,7 +60,7 @@
         <label for="sel2">Mutiple select list (hold shift to select more than one):</label>
         <select multiple class="form-control" id="sel2">
           {% for student in students %}
-            <option>student</option>
+            <option>{{student}}</option>
           {% endfor %}
         </select>
       </div>

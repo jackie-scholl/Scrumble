@@ -16,7 +16,14 @@ def index():
 def teacherindex():
     """Index Controller"""
     teacher_name = (request.form['teacher_name'])
-    return render_template('teacherindex.html', teacher_name=teacher_name)
+    students = ["test","test1"]
+    return render_template('teacherindex.html', teacher_name=teacher_name, students=students)
+  
+  
+@app.route('/teacherindex2')
+def teacherindex2():
+    """Index Controller"""
+    return render_template('teacherindex2.html')
 
   
 @app.route('/managetasks')
@@ -32,23 +39,16 @@ def managetaskspurple():
   
 
 @app.route('/managegroups')
-def managegroups(teacher_name):
+def managegroups():
     """Index Controller"""
-    students = get_students(teacher_name)
-    return render_template('managegroups.html', students)
+    students = session.get('students', None)
+    return render_template('managegroups.html')
   
-
 @app.route('/managestudents')
-def managestudents(teacher_name):
+def managestudents():
     """Index Controller"""
-    students = get_students(teacher_name)
-    return render_template('managestudents.html', students)
-
-
-@app.errorhandler(404)
-def handle_error(e):
-    return render_template('404.html')
-
+    students = request.args.get('students', None)
+    return render_template('managestudents.html')
 
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
@@ -68,7 +68,7 @@ def rebuild(boardname):
     [b.close_board(True) for b in boards_to_delete]
     out = []
     for x in range(len(groups)):
-        b = create_board(c, "Cell Biology Group %s" % (x + 1))
+        b = create_board(c, "Cell Biology Group %s" % x)
         out.append(b)
         for m in groups[x]:
             try:
@@ -95,3 +95,6 @@ def get_email(name):
         l = name.split(" ")
         return "%s.%s@example.edu" % (l[0], l[1])
         
+@app.errorhandler(404)
+def handle_error(e):
+    return render_template('404.html')

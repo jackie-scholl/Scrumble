@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Scrumble Login</title>
+    <!-- Custom styles for this template -->
+        <!-- Extra CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/cover.css') }}">
+      
+          <!-- Material Design Colors -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/materialdesigncolors.css') }}">
+      
+  </head>
+  
+  <body>
+    
+        <div class="site-wrapper" id="#home">
+      <div class="site-wrapper-inner">
+        <div class="inner cover">
+          <h1 class="palette-Green-200 text">Scrumble</h1>
+          <p class="palette-Blue-200 text">Introduce agile in your classroom.</p>
+          
+          <div class="input-group">
+            
+      <form action="/teacherindex" method="post" id='login'>
+      <input type="text" class="form-control" placeholder="username" name="teacher_name">
+      <input type="password" name="password" placeholder="password" >
+      <span class="input-group-btn">
+        <input type='submit' value='submit'>
+      </span>
+      </form>
+    </div><!-- /input-group -->
+
+          </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
