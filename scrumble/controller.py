@@ -3,18 +3,20 @@ from flask import request, url_for, render_template
 import os
 import requests
 import cgi
+#from requester import *
 
 
 @app.route('/')
 def index():
     """Index Controller"""
-    return render_template('teacherindex.html')
+    return render_template('login.html')
   
 
-@app.route('/teacherindex')
+@app.route('/teacherindex', methods=['POST'])
 def teacherindex():
     """Index Controller"""
-    return render_template('teacherindex.html')
+    teacher_name = (request.form['teacher_name'])
+    return render_template('teacherindex.html', teacher_name=teacher_name)
 
   
 @app.route('/managetasks')
@@ -30,14 +32,16 @@ def managetaskspurple():
   
 
 @app.route('/managegroups')
-def managegroups():
+def managegroups(teacher_name):
     """Index Controller"""
-    return render_template('managegroups.html')
+    students = get_students(teacher_name)
+    return render_template('managegroups.html', students)
   
 @app.route('/managestudents')
-def managestudents():
+def managestudents(teacher_name):
     """Index Controller"""
-    return render_template('managestudents.html')
+    students = get_students(teacher_name)
+    return render_template('managestudents.html', students)
 
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
