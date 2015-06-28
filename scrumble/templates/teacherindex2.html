@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    .badge-notify{
+   background:red;
+   position:relative;
+   top: -20px;
+   left: -35px;
+}
+      </style>
+    
+  </head>
+  <body>
+    <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Red.svg/120px-Red.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">1</span>
+    </div>
+        <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2000px-000080_Navy_Blue_Square.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">2</span>
+    </div>
+        <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Red.svg/120px-Red.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">3</span>
+    </div>
+        <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2000px-000080_Navy_Blue_Square.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">4</span>
+    </div>
+        <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Red.svg/120px-Red.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">5</span>
+    </div>
+        <div class="container">
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/2000px-000080_Navy_Blue_Square.svg.png" style="width:50px;height:50px;">
+  </button>
+    <span class="badge badge-notify">6</span>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <script>
+var elems = document.getElementsByTagName('div');
+var increase = Math.PI * 2 / elems.length;
+var x = 0, y = 0, angle = 0, elem;
+
+for (var i = 0; i < elems.length; i++) {
+    elem = elems[i];
+    x = 100 * Math.cos(angle) + 200;
+    y = 100 * Math.sin(angle) + 200;
+    elem.style.position = 'absolute';
+    elem.style.left = x + 'px';
+    elem.style.top = y + 'px';
+    angle += increase;
+}
+      
+          function getDiv(currAngle) {
+        return "<div class='circle' style='transform: rotate(" + currAngle + "deg) translate(12em) rotate(-" + currAngle + "deg);background-color:" + getRandomColor() + "'></div>"
+
+    }
+    </script>
+  </body>
+</html>
