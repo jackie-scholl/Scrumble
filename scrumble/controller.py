@@ -57,17 +57,22 @@ def managestudents():
     students = session['students']
     return render_template('managestudents.html', teacher_name=teacher_name, students=students)
 
+def get_client():
+    TROLLY_API_KEY = "bf71d01b024c31a1c294b4755af55add"
+    TROLLY_TOKEN = "404f4361c2e9bf578e355862ffaf603226c9bddfde60b4c44f6a3e9ed7d917cd"
+    from trolly.client import Client
+    from trolly.exceptions import ResourceUnavailable
+    return Client(TROLLY_API_KEY, TROLLY_TOKEN)
+    #boards = client.get_boards()
+    #return [x for x in boards if x.name == boardname][0]
+
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
     """Rebuild Controller"""
-    from trolly.client import Client
-    from trolly.exceptions import ResourceUnavailable
-    import uuid
-    api_key = "bf71d01b024c31a1c294b4755af55add"
-    token = "404f4361c2e9bf578e355862ffaf603226c9bddfde60b4c44f6a3e9ed7d917cd"
-    client = Client(api_key, token)
+    client = get_client()
     boards = client.get_boards()
     board = [x for x in boards if x.name == boardname][0]
+    board = get_board(boardname)
     lists = board.get_lists()
     backlog = lists[0]
     groups = [[x.strip() for x in y.name.split(",")] for y in lists[1].get_cards()]
@@ -115,7 +120,22 @@ def copy_card(list, original):
     if c['labels']:
         c2['labels'] = ",".join(c['labels'])
     return list.add_card(query_params=c2)
-        
+
+@app.route('/update_assignments/<boardname>')
+def update_assignments(boardname):
+    client = get_client()
+    boards = [x for x in client.get_boards() if x.name.find(boardname) == 0]
+    for board in boards:
+        for list in board.get_lists():
+            is_done = (list.name == "Done")
+            for card in list.get_cards():
+                ensure_assigned(card, card.get_members(), is_done)
+
+def ensure_assigned(card, students, is_done):
+    pass
+    
+
+
 @app.errorhandler(404)
 def handle_error(e):
     return render_template('404.html')
