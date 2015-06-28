@@ -49,61 +49,65 @@
       </div><!-- /.container-fluid -->
     </nav>
   
+  
+                    <!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Card</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <input type="text" class="form-control" id="project-task-input" placeholder="task" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary new-project-card-save" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>  
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Unit Name</h3>
-        Driving Question
+        <h3>Unit Name: Human Body</h3>
+        Driving Question: how we even do this living this, tho?
       </div>
       <div class="panel-body">
        <ul class="nav nav-tabs nav-justified ">
-         <li role="presentation" class= "palette-Red-700 bg"><a href="{{ url_for('managetasks') }}" class= "palette-Red-200 text">Red</a></li>
+         <li role="presentation" class= "palette-Red-700 bg"><a href="#" class= "palette-Red-200 text">Red</a></li>
          <li role="presentation" class= "palette-Orange-700 bg"><a href="#" class= "palette-Orange-200 text">Orange</a></li>
          <li role="presentation" class= "palette-Yellow-700 bg"><a href="#" class= "palette-Yellow-200 text">Yellow</a></li>
          <li role="presentation" class= "palette-Green-700 bg"><a href="#" class= "palette-Green-200 text">Green</a></li>
          <li role="presentation" class= "palette-Blue-700 bg"><a href="#" class= "palette-Blue-200 text">Blue</a></li>
-         <li role="presentation" class= "palette-Purple-700 bg active"><a href="#" class= "palette-Purple-200 text">Purple</a></li>
+         <li role="presentation" class= "palette-Purple-700 bg active"><a href="{{ url_for('managetaskspurple') }}" class= "palette-Purple-200 text">Purple</a></li>
        </ul>
-       <ul class="list-group">
-        <li class="list-group-item">
-          <p>objective</p>
-          <p class="pull-right">Assign to</p>
-          <br>
-          <p>task</p>
-          <div class="dropdown pull-right no-padding">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
+        
+        <ul class="nav nav-tabs nav-justified">
+          <li role="presentation" class= "active"><a href="#">Group 1</a></li>
+          <li role="presentation"><a href="#">Group 2</a></li>
+          <li role="presentation"><a href="#">Group 3</a></li>
+          <li role="presentation"><a href="#">Group 4</a></li>
+        </ul>
+        
+       <ul class="list-group" id="cards">
+         <li class="list-group-item">
+           <h4>Project: Cell Play</h4>
+         </li>
+         <li class="list-group-item">
+           task: create the script
+         </li>
+         <div id="addnew"> 
+         <li class="list-group-item">
+         <button class="btn-block add-project-card" data-toggle="modal" data-target="#projectModal">
+          + add new card
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-          </div>
-         </li>
-        <li class="list-group-item">
-          objective 
-          <br>
-          task
-         </li>
-        <li class="list-group-item">
-          objective
-          <br>
-          task
-         </li>
-        <li class="list-group-item">
-          objective
-          <br>
-          task
-         </li>
-        <li class="list-group-item">
-           objective
-          <br>
-          task
-         </li>
-      </ul>
+            </li>
+           <div>
+         </ul>
       </div>
     </div>
   
@@ -112,6 +116,8 @@
   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+    <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
 
   </body>
 </html>
