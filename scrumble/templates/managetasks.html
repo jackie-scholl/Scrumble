@@ -74,21 +74,27 @@ var onAuthorize = function() {
     Trello.members.get("me", function(member){
         $("#fullName").text(member.fullName);
     
-        var $cards = $("<div>")
-            .text("Loading Cards...")
+        var $boards = $("<div>")
+            .text("Loading Boards...")
             .appendTo("#output");
+
+        var unit_name = "Human Body"
+        var board_id = ""
 
         // Output a list of all of the cards that the member 
         // is assigned to
-        Trello.get("members/me/cards", function(cards) {
-            $cards.empty();
-            $.each(cards, function(ix, card) {
-                $("<a>")
-                .attr({href: card.url, target: "trello"})
-                .addClass("card")
-                .text(card.name)
-                .appendTo($cards);
-            });  
+        Trello.get("members/me/boards", {filter: "open"}, function(boards) {
+            $boards.empty();
+            $.each(boards, function(ix, board) {
+                if(board.name == unit_name) {
+                    $("<a>")
+                    .attr({href: board.url, target: "trello"})
+                    .addClass("board")
+                    .text(board.name)
+                    .appendTo($boards);
+                    board_id = board.id
+                }
+            });
         });
     });
 
@@ -107,17 +113,16 @@ var logout = function() {
 
 $("loggedin").toggle(false);
                           
-Trello.authorize({
+/*Trello.authorize({
     interactive:false,
     success: onAuthorize
-});
+});*/
 
 function tryAuthorize() {
     Trello.authorize({
         type: "popup",
         success: onAuthorize
     });
-    onAuthorize();
 }
 
 $("#connectLink")
