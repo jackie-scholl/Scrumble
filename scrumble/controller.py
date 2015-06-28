@@ -130,10 +130,16 @@ def update_assignments(boardname):
             is_done = (list.name == "Done")
             for card in list.get_cards():
                 ensure_assigned(card, card.get_members(), is_done)
+    return "Done!"
 
 def ensure_assigned(card, students, is_done):
-    pass
-    
+    make_assignment(get_assignment(card, students, is_done))
+
+def get_assignment(card, students, is_done):
+    card_map = card.get_card_information()
+    status = 'TURNED_IN' if is_done else 'IN_PROGRESS'
+    students_string = '[' + ",".join([s.name for s in students]) + ']'
+    return '{"schoolRefId": "","leaRefId": "","sectionRefId": "","students": %s,"refId": "%s","staffRefId": "","availableDate": "","dueDate": "","name": "%s","description": "%s","creatorRefId": "","administratorRefId": "","sourceObjects": [],"status": "%s"}' % (students_string, card_map['id'], card_map['name'], card_map['desc'], status)
 
 
 @app.errorhandler(404)

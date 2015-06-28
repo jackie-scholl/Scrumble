@@ -21,7 +21,12 @@
     
                 <!-- Extra CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/navstyles.css') }}">
-    
+
+    <!-- The client library requires jQuery  -->
+   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://api.trello.com/1/client.js?key=bf71d01b024c31a1c294b4755af55add"></script>
+
+
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -158,13 +163,14 @@
       </div>
     </div>
   
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   
     <script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script type=text/javascript src="Trello.authorize({type:popup,name:Scrumble,persist:false, scope:{read: allowRead,write:allowWrite, account: allowAccount},success:Trello.rest("GET","/1/cards",{ fields: "username,fullName" })})"></script>
 
   </body>
 </html>
