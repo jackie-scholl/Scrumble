@@ -18,40 +18,44 @@ def index():
 def teacherindex():
     """Index Controller"""
     session['teacher_name'] = (request.form['teacher_name'])
-    #get_students(session['teacher_name'])
-    session['students'] = ['test','test1']
-    return render_template('teacherindex.html')
+    teacher_name = session['teacher_name'] 
+    session['students'] = get_students(session['teacher_name'])
+    return render_template('teacherindex.html', teacher_name=teacher_name)
   
   
 @app.route('/teacherindex2')
 def teacherindex2():
     """Index Controller"""
-    return render_template('teacherindex2.html')
+    return render_template('teacherindex2.html', teacher_name=teacher_name)
 
   
 @app.route('/managetasks')
 def managetasks():
     """Index Controller"""
-    return render_template('managetasks.html')
+    teacher_name = session['teacher_name'] 
+    return render_template('managetasks.html', teacher_name=teacher_name)
   
   
 @app.route('/managetaskspurple')
 def managetaskspurple():
     """Index Controller"""
-    return render_template('managetaskspurple.html')
+    teacher_name = session['teacher_name'] 
+    return render_template('managetaskspurple.html', teacher_name=teacher_name)
   
 
 @app.route('/managegroups')
 def managegroups():
     """Index Controller"""
-    students = session.get('students', None)
-    return render_template('managegroups.html')
+    teacher_name = session['teacher_name'] 
+    students = session['students']
+    return render_template('managegroups.html', teacher_name=teacher_name, students=students)
   
 @app.route('/managestudents')
 def managestudents():
     """Index Controller"""
-    students = session.get('students', None)
-    return render_template('managestudents.html')
+    teacher_name = session['teacher_name'] 
+    students = session['students']
+    return render_template('managestudents.html', teacher_name=teacher_name, students=students)
 
 @app.route('/rebuild/<boardname>')
 def rebuild(boardname):
