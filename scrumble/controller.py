@@ -66,7 +66,7 @@ def rebuild(boardname):
                 pass
         l = b.add_list(query_params={"name": "backlog"})
         for c in b.get_cards():
-            l.add_card(query_params={"
+            l.add_card(query_params={"name": "backlog"})
     return cgi.escape(str(out))
 
 def create_board(client, name):
