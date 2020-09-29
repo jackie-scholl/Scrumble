@@ -4,7 +4,7 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 Werkzeug==0.15.3
 itsdangerous==0.24
-requests==2.4.3
+requests==2.20.0
 six==1.8.0
 stevedore==1.0.0
 wsgiref==0.1.2
